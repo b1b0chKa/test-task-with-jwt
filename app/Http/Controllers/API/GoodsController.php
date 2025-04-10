@@ -15,8 +15,12 @@ class GoodsController extends Controller
 	{
 		$goods = Goods::where('user_id', Auth::id())->get();
 
-		if (!$goods)
-			return response(null, 404);
+		if (empty($goods["data"]))
+		{
+			return response()->json([
+				'message' => "You don't have any goods"
+			],404);
+		}
 
 		return GoodsResource::collection($goods);
 	}
