@@ -64,4 +64,9 @@ class User extends Authenticatable implements ContractsJWTSubject
     {
         return [];
     }
+
+	public function goods()
+	{
+		return $this->hasMany(Goods::class);
+	}
 }

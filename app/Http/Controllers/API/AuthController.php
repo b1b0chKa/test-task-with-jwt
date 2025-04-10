@@ -32,10 +32,10 @@ class AuthController extends Controller
         $token = Auth::attempt($credentials);
 
 		if (!$token)
-			return response(null, 403);
+			return response(null, 401);
 
 		$user = Auth::user();
-		return new AuthResource($user);
+	return new AuthResource($user);
 
 	}
 
